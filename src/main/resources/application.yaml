@@ -1,0 +1,14 @@
+oxr:
+  service:
+    url: https://openexchangerates.org
+    currency: USD
+    id: 9803231183ba436ab00c4f91a4e3494f
+    name: openexchange
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: basic
