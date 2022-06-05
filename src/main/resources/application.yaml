@@ -12,3 +12,9 @@ feign:
         connectTimeout: 5000
         readTimeout: 5000
         loggerLevel: basic
+
+giphy:
+  service:
+    name: giphy
+    url: https://api.giphy.com
+    key: 6L68hv8EDza13rTjlCt7XWp1jrdqgDyv

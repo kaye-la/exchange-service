@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 @FeignClient(name = "${oxr.service.name}", url = "${oxr.service.url}")
 public interface ExchangeApi {
     @GetMapping("/api/latest.json")
-    RatesDTO getAllCurrencies(@RequestParam(value = "app_id") String appId,
+    RatesDTO getLatestRates(@RequestParam(value = "app_id") String appId,
         @RequestParam(value = "base") String base);
 
     @GetMapping("/api/historical/{date}.json")
-    RatesDTO getAllCurrenciesByDate(@PathVariable(name = "date") String date,
+    RatesDTO getRatesByDate(@PathVariable(name = "date") String date,
         @RequestParam(value = "app_id") String appId,
         @RequestParam(value = "base") String base);
 }

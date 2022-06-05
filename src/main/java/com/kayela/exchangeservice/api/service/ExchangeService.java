@@ -7,7 +7,9 @@ import java.util.Map;
  * todo Document type ExchangeService
  */
 public interface ExchangeService {
-    Map<String, BigDecimal> getAllCurrencies();
+    Map<String, BigDecimal> getLatestRates();
     String getAll();
-    Map<String, BigDecimal> getAllCurrenciesYesterday();
+    Map<String, BigDecimal> getYesterdayRates();
+    BigDecimal getChangeRatio(String currency);
+    Map<String, BigDecimal> getTemp();
 }

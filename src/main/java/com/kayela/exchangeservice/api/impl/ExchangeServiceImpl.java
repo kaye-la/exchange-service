@@ -12,7 +12,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 @Service
 public class ExchangeServiceImpl implements ExchangeService {
@@ -29,10 +28,10 @@ public class ExchangeServiceImpl implements ExchangeService {
     }
 
     @Override
-    public Map<String, BigDecimal> getAllCurrencies() {
+    public Map<String, BigDecimal> getLatestRates() {
         RatesDTO ratesDTO;
         try {
-            ratesDTO = exchangeApi.getAllCurrencies(exchangeAppID, baseCurrency);
+            ratesDTO = exchangeApi.getLatestRates(exchangeAppID, baseCurrency);
         } catch (FeignException ex) {
             return new HashMap<>();
         }
@@ -40,11 +39,11 @@ public class ExchangeServiceImpl implements ExchangeService {
     }
 
     @Override
-    public Map<String, BigDecimal> getAllCurrenciesYesterday() {
+    public Map<String, BigDecimal> getYesterdayRates() {
         RatesDTO ratesDto;
         try {
             String date = getYesterdayDate();
-            ratesDto = exchangeApi.getAllCurrenciesByDate(date, exchangeAppID, baseCurrency);
+            ratesDto = exchangeApi.getRatesByDate(date, exchangeAppID, baseCurrency);
         } catch (FeignException ex) {
             return new HashMap<>();
         }
@@ -57,10 +56,28 @@ public class ExchangeServiceImpl implements ExchangeService {
         return getYesterdayDate();
     }
 
+    @Override
+    public Map<String, BigDecimal> getTemp() {
+        return getYesterdayRates();
+    }
     private String getYesterdayDate() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DATE, -1);
         return dateFormat.format(cal.getTime());
+    }
+
+    @Override
+    public BigDecimal getChangeRatio(String currency) {
+        BigDecimal newRate = getLatestRates().get(currency);
+
+        if (newRate == null) {
+            return null;
+        }
+        BigDecimal oldRate = getYesterdayRates().get(currency);
+        if (oldRate == null) {
+            return null;
+        }
+        return newRate.subtract(oldRate);
     }
 }
