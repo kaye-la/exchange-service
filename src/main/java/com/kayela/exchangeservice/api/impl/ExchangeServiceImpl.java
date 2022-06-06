@@ -55,22 +55,6 @@ public class ExchangeServiceImpl implements ExchangeService {
         return ratesDto.getRates();
     }
 
-//    @Override
-//    public String getAll() {
-//        return getYesterdayDate();
-//    }
-
-//    @Override
-//    public Map<String, BigDecimal> getTemp() {
-//        return getYesterdayRates();
-//    }
-    private String getYesterdayDate() {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        Calendar cal = Calendar.getInstance();
-        cal.add(Calendar.DATE, -1);
-        return dateFormat.format(cal.getTime());
-    }
-
     @Override
     public BigDecimal getChangeRatio(String currency) throws ExchangeException {
         BigDecimal newRate = getLatestRates().get(currency);
@@ -83,5 +67,16 @@ public class ExchangeServiceImpl implements ExchangeService {
             throw new ExchangeException("Exchange exception. Old rates are empty");
         }
         return newRate.subtract(oldRate);
+    }
+
+    // ===================================================================================================================
+    // = Utils
+    // ===================================================================================================================
+
+    private String getYesterdayDate() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DATE, -1);
+        return dateFormat.format(cal.getTime());
     }
 }

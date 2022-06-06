@@ -12,6 +12,11 @@ public class RatesDTO {
     @JsonProperty("rates")
     private Map<String, BigDecimal> rates;
 
+    public RatesDTO(String base, Map<String, BigDecimal> rates) {
+        this.base = base;
+        this.rates = rates;
+    }
+
     public Map<String, BigDecimal> getRates() {
         return rates;
     }
