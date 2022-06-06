@@ -8,8 +8,8 @@ import java.util.Map;
  */
 public interface ExchangeService {
     Map<String, BigDecimal> getLatestRates();
-    String getAll();
+//    String getAll();
     Map<String, BigDecimal> getYesterdayRates();
     BigDecimal getChangeRatio(String currency);
-    Map<String, BigDecimal> getTemp();
+//    Map<String, BigDecimal> getTemp();
 }

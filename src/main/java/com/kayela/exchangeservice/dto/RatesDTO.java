@@ -5,9 +5,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.math.BigDecimal;
 import java.util.Map;
 
-/**
- * todo Document type RatesDTO
- */
 public class RatesDTO {
     @JsonProperty("base")
     private String base;

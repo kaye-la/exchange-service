@@ -22,19 +22,9 @@ public class ExchangeController {
         this.exchangeService = exchangeService;
     }
 
-    @GetMapping("/currencies/{currency}")
+    @GetMapping("/{currency}")
     public ResponseEntity<Map<String, BigDecimal>> getAllCurrencies(@PathVariable String currency)
     {
         return new ResponseEntity<>(exchangeService.getLatestRates(), HttpStatus.OK);
-    }
-    @GetMapping("/currencie")
-    public ResponseEntity<String> tempCheck()
-    {
-        return ResponseEntity.ok(exchangeService.getAll());
-    }
-    @GetMapping("/currenci")
-    public ResponseEntity<Map<String, BigDecimal>> tempChecks()
-    {
-        return ResponseEntity.ok(exchangeService.getTemp());
     }
 }

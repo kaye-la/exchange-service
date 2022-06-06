@@ -17,6 +17,7 @@ import java.util.Random;
 public class GiphyServiceImpl implements GiphyService {
     private final int LIMIT = 50;
     private GiphyApi giphyApi;
+
     @Value("${giphy.service.key}")
     private String apiKey;
 
@@ -34,10 +35,10 @@ public class GiphyServiceImpl implements GiphyService {
     @Override
     public GifDTO getRandomGif(String search) throws GifException {
         List<GifDTO> gifs = getGifs(search, LIMIT).getData();
-
         if (gifs.isEmpty()) {
             throw new GifException("Gif API problem. Gifs are empty");
         }
+
         Random rnd = new Random();
         return gifs.get(rnd.nextInt(gifs.size()));
     }

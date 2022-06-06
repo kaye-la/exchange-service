@@ -1,8 +1,8 @@
 package com.kayela.exchangeservice.exceptions;
 
-/**
- * todo Document type GifException
- */
+import lombok.Getter;
+
+@Getter
 public class GifException extends RuntimeException {
     public GifException(String message) {
         super(message);

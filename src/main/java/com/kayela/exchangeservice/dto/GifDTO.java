@@ -1,10 +1,9 @@
 package com.kayela.exchangeservice.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
 
-/**
- * todo Document type GifDTO
- */
+@Data
 public class GifDTO {
 
     @JsonProperty("id")
