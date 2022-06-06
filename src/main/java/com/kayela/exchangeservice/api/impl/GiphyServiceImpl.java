@@ -27,14 +27,14 @@ public class GiphyServiceImpl implements GiphyService {
     }
 
     @Override
-    public GiphyDTO getGifs(String search, int limit) {
+    public List<GifDTO> getGifs(String search, int limit) {
         GiphyDTO gifs = giphyApi.getGifs(apiKey, search, limit);
-        return gifs;
+        return gifs.getData();
     }
 
     @Override
     public GifDTO getRandomGif(String search) throws GifException {
-        List<GifDTO> gifs = getGifs(search, LIMIT).getData();
+        List<GifDTO> gifs = getGifs(search, LIMIT);
         if (gifs.isEmpty()) {
             throw new GifException("Gif API problem. Gifs are empty");
         }
