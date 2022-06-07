@@ -36,7 +36,7 @@ public class GifController {
         if (diff.compareTo(BigDecimal.ZERO) > 0) {
             gifDto = giphyService.getRandomGif("rich");
         } else {
-            gifDto = giphyService.getRandomGif("poor");
+            gifDto = giphyService.getRandomGif("broke");
         }
         return ResponseEntity.ok(gifDto);
     }

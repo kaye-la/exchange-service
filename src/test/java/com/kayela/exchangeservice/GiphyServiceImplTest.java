@@ -35,8 +35,8 @@ public class GiphyServiceImplTest {
         expectedgifs.add(new GifDTO("3", "khank3"));
         expectedgifs.add(new GifDTO("4", "khank4"));
 
-        Mockito.when(giphyApi.getGifs(apiKey, "poor", 4)).thenReturn(new GiphyDTO(expectedgifs));
-        List<GifDTO> gifs = giphyService.getGifs("poor", 4);
+        Mockito.when(giphyApi.getGifs(apiKey, "broke", 4)).thenReturn(new GiphyDTO(expectedgifs));
+        List<GifDTO> gifs = giphyService.getGifs("broke", 4);
 
         Assert.isTrue(gifs.equals(expectedgifs), "Gifs should be equal to expected gifs");
     }
@@ -50,8 +50,8 @@ public class GiphyServiceImplTest {
         gifs.add(new GifDTO("3", "khank3"));
         gifs.add(new GifDTO("4", "khank4"));
 
-        Mockito.when(giphyApi.getGifs(apiKey, "poor", 50)).thenReturn(new GiphyDTO(gifs));
-        GifDTO gif = giphyService.getRandomGif("poor");
+        Mockito.when(giphyApi.getGifs(apiKey, "broke", 50)).thenReturn(new GiphyDTO(gifs));
+        GifDTO gif = giphyService.getRandomGif("broke");
 
         Assert.isTrue(gif.getId().equals("1") || gif.getId().equals("2")
             || gif.getId().equals("3") || gif.getId().equals("4"),
