@@ -2,12 +2,10 @@
 ## Description
 
 The project is test task for Junior Java developer/Intern.
+
 A service that calls the exchange rate service and displays a gif.
 If the rate against USD for today has become higher than yesterday, then service give a random gif from https://giphy.com/search/rich. If the rate against USD for today has become below than yesterday, then service give a random gif from https://giphy.com/search/broke.
 
-- Type some Markdown on the left
-- See HTML in the right
-- ✨Magic ✨
 
 ## Must have
 
@@ -35,7 +33,7 @@ To build locally, you will need JDK, Git and Gradle installed.
 In command line:
 ```
 # Clone repository
-$ git clone 
+$ git clone https://github.com/kaye-la/exchange-service.git
 
 # Go to repository
 $ cd exchange-service
